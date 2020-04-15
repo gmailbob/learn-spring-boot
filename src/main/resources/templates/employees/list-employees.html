@@ -29,13 +29,17 @@
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="ele : ${employees}">
-					<th th:text="${ele.firstName}" />
-					<th th:text="${ele.lastName}" />
-					<th th:text="${ele.email}" />
+					<td th:text="${ele.firstName}" />
+					<td th:text="${ele.lastName}" />
+					<td th:text="${ele.email}" />
+					<td>
+						<a th:href="@{/employees/showFormForUpdate(employeeId=${ele.id})}" class="btn btn-info btn-sm">Update</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
