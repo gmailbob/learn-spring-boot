@@ -1,4 +1,4 @@
-package com.luv2code.springboot.cruddemo.entity;
+package com.luv2code.springboot.thymeleafdemo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "employee")
 public class Employee {
+
+	// define fields
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -24,18 +27,24 @@ public class Employee {
 	@Column(name = "email")
 	private String email;
 
-	// no-arg constructor required by Hibernate which is a popular
-	// implementation of JPA and default used by spring boot
+	// define constructors
+
 	public Employee() {
 
 	}
 
-	public Employee(String firstName, String lastName, String email) {
+	public Employee(int id, String firstName, String lastName, String email) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
+	public Employee(String firstName, String lastName, String email) {
+		this(0, firstName, lastName, email);
+	}
+
+	// define getter/setter
 	public int getId() {
 		return id;
 	}
@@ -68,8 +77,11 @@ public class Employee {
 		this.email = email;
 	}
 
+	// define tostring
+
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
+
 }
